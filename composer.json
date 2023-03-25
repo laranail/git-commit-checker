@@ -1,0 +1,57 @@
+{
+  "name": "laranail/git-commit-checker",
+  "description": "A highly opinionated Git pre-commit hooks for coding standards checking, and syntax fixing for the Laravel framework.",
+  "type": "package",
+  "license": "MIT",
+  "keywords": [
+    "simtabi",
+    "simtabi cms",
+    "simtabi platform",
+    "simtabi git commit checker",
+    "git",
+    "commit checker"
+  ],
+  "homepage": "https://simtabi.com",
+  "authors": [
+    {
+      "name": "Imani Manyara",
+      "role": "Developer",
+      "homepage": "https://simtabi.com"
+    },
+    {
+      "name": "Easter Mukora",
+      "role": "Developer",
+      "homepage": "https://simtabi.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Simtabi\\Laranail\\GitCommitChecker\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Simtabi\\Laranail\\GitCommitChecker\\Tests\\": "tests"
+    }
+  },
+  "require": {
+    "php": ">=8.0",
+    "laravel/framework": ">=9.32",
+    "laravel/pint": ">=1.4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": ">=9.0"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Simtabi\\Laranail\\GitCommitChecker\\Providers\\GitCommitCheckerServiceProvider"
+      ]
+    }
+  },
+
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "stable"
+}

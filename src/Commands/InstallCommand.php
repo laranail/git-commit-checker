@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Simtabi\Laranail\GitCommitChecker\Commands;
 
@@ -57,21 +59,21 @@ class InstallCommand extends Command
             abort(1);
         }
 
-        $command = new $class();
+        $command = new $class;
 
         if ($command instanceof Command === false) {
-            $this->components->error("Class [$class] is not instance of " . Command::class . '.');
+            $this->components->error("Class [$class] is not instance of ".Command::class.'.');
             abort(1);
         }
 
         $script = $this->generateHookScript($command->getName());
 
-        $path = $this->laravel->basePath('.git/hooks/' . $hook);
+        $path = $this->laravel->basePath('.git/hooks/'.$hook);
         $relativePath = ltrim(str_replace($this->laravel->basePath(), '', $path), DIRECTORY_SEPARATOR);
 
         if (
             $this->laravel['files']->exists($path) &&
-            ! $this->confirmToProceed($relativePath . ' already exists, do you want to overwrite it?', true)
+            ! $this->confirmToProceed($relativePath.' already exists, do you want to overwrite it?', true)
         ) {
             return false;
         }
@@ -104,9 +106,9 @@ class InstallCommand extends Command
                     ? ['preset' => $preset]
                     : $this->laravel['config']->get('git-commit-checker.pint.recommended_preset'),
                 JSON_PRETTY_PRINT
-            ) . PHP_EOL
+            ).PHP_EOL
         )) {
-            $this->components->error('Unable to write ' . $path);
+            $this->components->error('Unable to write '.$path);
             abort(1);
         }
 

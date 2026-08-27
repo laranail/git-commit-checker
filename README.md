@@ -1,68 +1,29 @@
-![banner](.github/assets/banner.png?raw=true)
+# laranail/git-commit-checker
 
-Git Commit Checker
-============
-A highly opinionated Git pre-commit hooks for coding standards checking, and syntax fixing for the Laravel framework.
+[![Packagist](https://img.shields.io/packagist/v/laranail/git-commit-checker.svg)](https://packagist.org/packages/laranail/git-commit-checker)
+[![Tests](https://github.com/laranail/git-commit-checker/actions/workflows/tests.yml/badge.svg)](https://github.com/laranail/git-commit-checker/actions/workflows/tests.yml)
+[![Static analysis](https://github.com/laranail/git-commit-checker/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/laranail/git-commit-checker/actions/workflows/static-analysis.yml)
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Requirements
-============
+> Git pre-commit hooks for coding-standard and syntax checks in Laravel projects.
 
-To be able to use this package you need to meet the following minimum requirements:
-1. Laravel framework >= v9
-2. PHP >= v8.0
+Requires PHP `^8.4.1 || ^8.5` and Laravel `^13.0`.
 
-****
+## Install
 
-## Installation
-
-You can install the package via composer:
-
-```shell
+```bash
 composer require laranail/git-commit-checker
 ```
 
-To publish views and config files for further manipulation, run the following commands:
+## <a name="documentation"></a>Documentation
 
-```bash
-php artisan vendor:publish laranail::git-commit-checker-config
-php artisan vendor:publish laranail::git-commit-checker-views
-```
+Full documentation is at
+**[opensource.simtabi.com/documentation/laranail/git-commit-checker](https://opensource.simtabi.com/documentation/laranail/git-commit-checker/)**.
 
-### Install GIT hooks
+### Project
 
-Run this command to install:
-
-```shell
-php artisan git-commit-checker:install
-```
-
-Run test manually (made sure you've added all changed files to git stage):
-
-```shell
-php artisan git-commit-checker:pre-commit-hook
-```
-
-### Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-### Security
-
-If you discover any security related issues, please email minhsang2603@gmail.com instead of using the issue tracker.
-
-Credits
-============
-This project wouldn't have been possible without the inspiration and ideas borrowed from many sources across the open source community,
-we say thank you to the respective authors.
-
-## Contributors
-
-- [All Contributors](CONTRIBUTORS.md)
+- [Architecture](docs/architecture.md) — what this package registers, and under which names.
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+MIT. See [LICENSE](LICENSE).

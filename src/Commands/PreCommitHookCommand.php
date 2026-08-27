@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Simtabi\Laranail\GitCommitChecker\Commands;
 
@@ -47,7 +49,7 @@ class PreCommitHookCommand extends Command
             $result = json_decode($process->getOutput(), true);
 
             render(
-                view('git-commit-checker::summary', [
+                view('laranail/git-commit-checker::summary', [
                     'result' => $result,
                     'isSuccessful' => $process->isSuccessful(),
                 ])

@@ -1,10 +1,12 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Simtabi\Laranail\GitCommitChecker\Providers;
 
+use Illuminate\Support\ServiceProvider;
 use Simtabi\Laranail\GitCommitChecker\Commands\InstallCommand;
 use Simtabi\Laranail\GitCommitChecker\Commands\PreCommitHookCommand;
-use Illuminate\Support\ServiceProvider;
 
 class CommandServiceProvider extends ServiceProvider
 {

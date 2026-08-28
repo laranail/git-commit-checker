@@ -68,8 +68,8 @@
     },
     "prefer-stable": true,
     "scripts": {
-        "pint": "vendor/bin/pint --test --config vendor/laranail/package-tools/pint.json",
-        "pint-fix": "vendor/bin/pint --parallel --config vendor/laranail/package-tools/pint.json",
+        "pint": "@php vendor/bin/laranail-pint --test",
+        "pint-fix": "@php vendor/bin/laranail-pint --parallel",
         "format": "@pint-fix",
         "lint": [
             "@pint"

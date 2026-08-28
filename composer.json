@@ -42,7 +42,8 @@
     "require-dev": {
         "laravel/pint": "^1.18",
         "orchestra/testbench": "^11.1",
-        "pestphp/pest": "^4.6"
+        "pestphp/pest": "^4.6",
+        "laranail/package-tools": "^0.1"
     },
     "extra": {
         "laravel": {
@@ -74,5 +75,11 @@
         "lint": [
             "@pint"
         ]
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/laranail/package-tools"
+        }
+    ]
 }

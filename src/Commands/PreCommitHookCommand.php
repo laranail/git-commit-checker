@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace Simtabi\Laranail\GitCommitChecker\Commands;
 
+use Illuminate\Console\Command;
 use Illuminate\Support\Str;
+use Symfony\Component\Console\Attribute\AsCommand;
+use Symfony\Component\Process\Process;
 
 use function Termwind\render;
-
-use Illuminate\Console\Command;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand('git-commit-checker:pre-commit-hook', 'Git hook before commit')]
 class PreCommitHookCommand extends Command
@@ -51,7 +50,7 @@ class PreCommitHookCommand extends Command
 
             render(
                 view('laranail/git-commit-checker::summary', [
-                    'result'       => $result,
+                    'result' => $result,
                     'isSuccessful' => $process->isSuccessful(),
                 ]),
             );

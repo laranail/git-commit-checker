@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\View;
 
 /**
  * Every name this package registers into a framework-owned registry.

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Simtabi\Laranail\GitCommitChecker\Commands;
 
-use Illuminate\Console\Application;
 use Illuminate\Console\Command;
+use Illuminate\Console\Application;
 use Illuminate\Console\ConfirmableTrait;
-use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand('git-commit-checker:install', 'Install "pre_commit" hook into your git.')]
 class InstallCommand extends Command
@@ -62,18 +62,18 @@ class InstallCommand extends Command
         $command = new $class;
 
         if ($command instanceof Command === false) {
-            $this->components->error("Class [$class] is not instance of ".Command::class.'.');
+            $this->components->error("Class [$class] is not instance of " . Command::class . '.');
             abort(1);
         }
 
         $script = $this->generateHookScript($command->getName());
 
-        $path = $this->laravel->basePath('.git/hooks/'.$hook);
+        $path = $this->laravel->basePath('.git/hooks/' . $hook);
         $relativePath = ltrim(str_replace($this->laravel->basePath(), '', $path), DIRECTORY_SEPARATOR);
 
         if (
             $this->laravel['files']->exists($path) &&
-            ! $this->confirmToProceed($relativePath.' already exists, do you want to overwrite it?', true)
+            ! $this->confirmToProceed($relativePath . ' already exists, do you want to overwrite it?', true)
         ) {
             return false;
         }
@@ -106,9 +106,9 @@ class InstallCommand extends Command
                     ? ['preset' => $preset]
                     : $this->laravel['config']->get('git-commit-checker.pint.recommended_preset'),
                 JSON_PRETTY_PRINT,
-            ).PHP_EOL,
+            ) . PHP_EOL,
         )) {
-            $this->components->error('Unable to write '.$path);
+            $this->components->error('Unable to write ' . $path);
             abort(1);
         }
 

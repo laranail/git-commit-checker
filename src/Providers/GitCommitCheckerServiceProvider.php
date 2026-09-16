@@ -10,22 +10,22 @@ class GitCommitCheckerServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../../config/config.php', 'laranail.git-commit-checker');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'laranail.git-commit-checker');
     }
 
     public function boot()
     {
         $this->app->register(CommandServiceProvider::class);
 
-        $this->loadViewsFrom(__DIR__.'/../../resources/views', 'laranail/git-commit-checker');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'laranail/git-commit-checker');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../../config/config.php' => config_path('git-commit-checker.php'),
+                __DIR__ . '/../../config/config.php' => config_path('git-commit-checker.php'),
             ], 'laranail::git-commit-checker-config');
 
             $this->publishes([
-                __DIR__.'/../../resources/views' => resource_path('views/vendor/laranail/git-commit-checker'),
+                __DIR__ . '/../../resources/views' => resource_path('views/vendor/laranail/git-commit-checker'),
             ], 'laranail::git-commit-checker-views');
         }
     }

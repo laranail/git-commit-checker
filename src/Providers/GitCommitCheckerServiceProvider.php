@@ -21,7 +21,7 @@ class GitCommitCheckerServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../../config/config.php' => config_path('git-commit-checker.php'),
+                __DIR__ . '/../../config/config.php' => config_path('laranail/git-commit-checker.php'),
             ], 'laranail::git-commit-checker-config');
 
             $this->publishes([

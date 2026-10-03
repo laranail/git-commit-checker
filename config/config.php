@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Simtabi\GitCommitChecker\Commands\PreCommitHookCommand;
+use Simtabi\Laranail\GitCommitChecker\Commands\PreCommitHookCommand;
 
 return [
     'enabled' => env('GIT_COMMIT_CHECKER_ENABLED', true),

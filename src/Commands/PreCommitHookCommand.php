@@ -11,13 +11,16 @@ use function Termwind\render;
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Console\Attribute\AsCommand;
+use Simtabi\Laranail\GitCommitChecker\Commands\Concerns\ReadsPackageConfig;
 
 #[AsCommand('git-commit-checker:pre-commit-hook', 'Git hook before commit')]
 class PreCommitHookCommand extends Command
 {
+    use ReadsPackageConfig;
+
     public function handle(): int
     {
-        if (! $this->laravel['config']->get('git-commit-checker.enabled')) {
+        if (! $this->packageConfig('enabled')) {
             $this->components->info('git-commit-hook is disabled. Skipped.');
 
             return self::SUCCESS;

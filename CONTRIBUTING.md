@@ -1,5 +1,7 @@
 # Contributing
 
+Where this file is silent, the [laranail contributing guide](https://github.com/laranail/.github/blob/HEAD/CONTRIBUTING.md) applies.
+
 Contributions are **welcome** and will be fully **credited**.
 
 Please read and understand the contribution guide before creating an issue or pull request.

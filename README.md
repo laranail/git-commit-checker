@@ -16,7 +16,20 @@ Requires PHP `^8.4.1 || ^8.5` and Laravel `^13.0`.
 composer require laranail/git-commit-checker
 ```
 
-## Quick start
+## Quick start guide and usage
+
+### Getting started
+
+1. Run it from a Git checkout in a local environment: `git-commit-checker:install` refuses to write
+   a hook when `APP_ENV` is not `local` or there is no `.git` directory.
+2. Optionally publish the config to change the hooks or the Pint presets. The pre-commit check is on
+   by default; `GIT_COMMIT_CHECKER_ENABLED=false` switches it off.
+
+   ```bash
+   php artisan vendor:publish --tag=laranail::git-commit-checker-config
+   ```
+
+### Usage
 
 ```bash
 # Write .git/hooks/pre-commit and, optionally, a pint.json preset

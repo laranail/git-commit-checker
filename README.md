@@ -16,6 +16,19 @@ Requires PHP `^8.4.1 || ^8.5` and Laravel `^13.0`.
 composer require laranail/git-commit-checker
 ```
 
+## Quick start
+
+```bash
+# Write .git/hooks/pre-commit and, optionally, a pint.json preset
+php artisan git-commit-checker:install
+
+# Every commit now runs Pint in --test mode over the changed PHP files;
+# run the same check by hand without committing
+php artisan git-commit-checker:pre-commit-hook
+```
+
+How the hook is wired is in [Architecture](docs/architecture.md); everything else is in the [documentation index](#documentation).
+
 ## <a name="documentation"></a>Documentation
 
 Full documentation is at

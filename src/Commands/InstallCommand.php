@@ -9,11 +9,13 @@ use Illuminate\Console\Application;
 use Illuminate\Console\ConfirmableTrait;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Attribute\AsCommand;
+use Simtabi\Laranail\GitCommitChecker\Commands\Concerns\ReadsPackageConfig;
 
 #[AsCommand('git-commit-checker:install', 'Install "pre_commit" hook into your git.')]
 class InstallCommand extends Command
 {
     use ConfirmableTrait;
+    use ReadsPackageConfig;
 
     public function handle(): int
     {
@@ -29,7 +31,7 @@ class InstallCommand extends Command
             return self::FAILURE;
         }
 
-        foreach ($this->laravel['config']->get('git-commit-checker.hooks') as $hook => $command) {
+        foreach ($this->packageConfig('hooks', []) as $hook => $command) {
             $this->install($hook, $command)
                 ? $this->components->info("Hook [$hook] is installed successfully.")
                 : $this->components->error("Unable to install hook [$hook].");
@@ -88,7 +90,7 @@ class InstallCommand extends Command
 
     protected function generatePintConfiguration(string $path): void
     {
-        $presets = $this->laravel['config']->get('git-commit-checker.pint.presets', []);
+        $presets = $this->packageConfig('pint.presets', []);
 
         if (empty($presets)) {
             $this->components->error('Do not found a list of supported presets');
@@ -104,7 +106,7 @@ class InstallCommand extends Command
             json_encode(
                 $preset !== 'recommended'
                     ? ['preset' => $preset]
-                    : $this->laravel['config']->get('git-commit-checker.pint.recommended_preset'),
+                    : $this->packageConfig('pint.recommended_preset'),
                 JSON_PRETTY_PRINT,
             ) . PHP_EOL,
         )) {

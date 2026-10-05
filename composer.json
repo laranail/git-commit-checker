@@ -15,6 +15,7 @@
     "authors": [
         {
             "name": "Imani Manyara",
+            "email": "imani@simtabi.com",
             "role": "Developer",
             "homepage": "https://simtabi.com"
         },
@@ -80,6 +81,16 @@
         {
             "type": "vcs",
             "url": "https://github.com/laranail/package-tools"
+        },
+        {
+            "type": "composer",
+            "url": "https://repo.packagist.org",
+            "exclude": [
+                "laranail/*"
+            ]
+        },
+        {
+            "packagist.org": false
         }
     ]
 }

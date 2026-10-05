@@ -21,10 +21,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **A config published to `config/git-commit-checker.php`** is still honoured. Republish with
   `--tag=laranail::git-commit-checker-config`, which now writes
   `config/laranail/git-commit-checker.php`, and delete the old file.
+- `git-commit-checker:install` and `git-commit-checker:pre-commit-hook`. Both stay registered as
+  aliases of the scoped commands and print a deprecation line naming the replacement when used,
+  so hooks installed before this release keep working. Re-run
+  `laranail::git-commit-checker.install` to rewrite a hook. The aliases may be removed in the next
+  minor after 0.1.
 
 ### Added
 
 - A `Quick start` section in the README.
+
+### Changed
+
+- **The commands are `laranail::git-commit-checker.install` and
+  `laranail::git-commit-checker.pre-commit-hook`**, the family's `laranail::<slug>.<command>` shape.
+  The hook script `install` writes calls the scoped name. A local copy of `laranail/console`'s
+  `SupportsNamespacedNames` trait lets Symfony accept the `::`; the package still requires no
+  `laranail/*` package.
+- The `repositories` block replaces Packagist with a copy that excludes `laranail/*`, so
+  `laranail/package-tools` can only resolve from its VCS repository. This is the family's standard
+  block.
+- The Imani Manyara author entry carries `imani@simtabi.com`.
 
 ## v0.1.0
 

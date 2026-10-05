@@ -10,12 +10,23 @@ use Illuminate\Console\ConfirmableTrait;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Simtabi\Laranail\GitCommitChecker\Commands\Concerns\ReadsPackageConfig;
+use Simtabi\Laranail\GitCommitChecker\Commands\Concerns\WarnsOnDeprecatedAlias;
+use Simtabi\Laranail\GitCommitChecker\Commands\Concerns\SupportsNamespacedNames;
 
-#[AsCommand('git-commit-checker:install', 'Install "pre_commit" hook into your git.')]
+/**
+ * Registered as `laranail::git-commit-checker.install`.
+ *
+ * `git-commit-checker:install` stays registered as an alias of it and prints a
+ * deprecation line when used. That alias is deprecated and may be removed in the
+ * next minor after 0.1.
+ */
+#[AsCommand('laranail::git-commit-checker.install|git-commit-checker:install', 'Install "pre_commit" hook into your git.')]
 class InstallCommand extends Command
 {
     use ConfirmableTrait;
     use ReadsPackageConfig;
+    use SupportsNamespacedNames;
+    use WarnsOnDeprecatedAlias;
 
     public function handle(): int
     {

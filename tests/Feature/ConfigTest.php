@@ -30,14 +30,14 @@ it('names hook commands that exist', function (): void {
 it('runs the hook when enabled at the registered key', function (): void {
     Config::set('laranail.git-commit-checker.enabled', true);
 
-    $this->artisan('git-commit-checker:pre-commit-hook')
+    $this->artisan('laranail::git-commit-checker.pre-commit-hook')
         ->doesntExpectOutputToContain('is disabled');
 });
 
 it('skips the hook when disabled at the registered key', function (): void {
     Config::set('laranail.git-commit-checker.enabled', false);
 
-    $this->artisan('git-commit-checker:pre-commit-hook')
+    $this->artisan('laranail::git-commit-checker.pre-commit-hook')
         ->expectsOutputToContain('is disabled')
         ->assertSuccessful();
 });
@@ -47,6 +47,6 @@ it('still honours a config published to the old bare path', function (): void {
     Config::set('git-commit-checker', array_replace(Config::get('laranail.git-commit-checker'), ['enabled' => false]));
     Config::set('laranail.git-commit-checker.enabled', true);
 
-    $this->artisan('git-commit-checker:pre-commit-hook')
+    $this->artisan('laranail::git-commit-checker.pre-commit-hook')
         ->expectsOutputToContain('is disabled');
 });

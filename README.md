@@ -20,8 +20,8 @@ composer require laranail/git-commit-checker
 
 ### Getting started
 
-1. Run it from a Git checkout in a local environment: `git-commit-checker:install` refuses to write
-   a hook when `APP_ENV` is not `local` or there is no `.git` directory.
+1. Run it from a Git checkout in a local environment: `laranail::git-commit-checker.install` refuses to
+   write a hook when `APP_ENV` is not `local` or there is no `.git` directory.
 2. Optionally publish the config to change the hooks or the Pint presets. The pre-commit check is on
    by default; `GIT_COMMIT_CHECKER_ENABLED=false` switches it off.
 
@@ -33,12 +33,17 @@ composer require laranail/git-commit-checker
 
 ```bash
 # Write .git/hooks/pre-commit and, optionally, a pint.json preset
-php artisan git-commit-checker:install
+php artisan laranail::git-commit-checker.install
 
 # Every commit now runs Pint in --test mode over the changed PHP files;
 # run the same check by hand without committing
-php artisan git-commit-checker:pre-commit-hook
+php artisan laranail::git-commit-checker.pre-commit-hook
 ```
+
+> `git-commit-checker:install` and `git-commit-checker:pre-commit-hook` are deprecated aliases of
+> these two commands. They still run, print a deprecation line, and may be removed in the next minor
+> after 0.1. A hook installed before the rename calls the old name and keeps working; run
+> `laranail::git-commit-checker.install` again to rewrite it with the new one.
 
 How the hook is wired is in [Architecture](docs/architecture.md); everything else is in the [documentation index](#documentation).
 

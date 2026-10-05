@@ -12,11 +12,22 @@ use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Simtabi\Laranail\GitCommitChecker\Commands\Concerns\ReadsPackageConfig;
+use Simtabi\Laranail\GitCommitChecker\Commands\Concerns\WarnsOnDeprecatedAlias;
+use Simtabi\Laranail\GitCommitChecker\Commands\Concerns\SupportsNamespacedNames;
 
-#[AsCommand('git-commit-checker:pre-commit-hook', 'Git hook before commit')]
+/**
+ * Registered as `laranail::git-commit-checker.pre-commit-hook`.
+ *
+ * `git-commit-checker:pre-commit-hook` stays registered as an alias of it and prints a
+ * deprecation line when used. That alias is deprecated and may be removed in the
+ * next minor after 0.1.
+ */
+#[AsCommand('laranail::git-commit-checker.pre-commit-hook|git-commit-checker:pre-commit-hook', 'Git hook before commit')]
 class PreCommitHookCommand extends Command
 {
     use ReadsPackageConfig;
+    use SupportsNamespacedNames;
+    use WarnsOnDeprecatedAlias;
 
     public function handle(): int
     {

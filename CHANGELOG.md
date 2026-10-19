@@ -33,6 +33,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- A guard now keeps literal credentials out of the tests, and keeps every generated credential's
+  purpose a single word, because secret scanners cannot tell a test password from a leaked one.
+  `laranail/package-tools`, which ships it, is now required at `^0.1.10`.
 - **The commands are `laranail::git-commit-checker.install` and
   `laranail::git-commit-checker.pre-commit-hook`**, the family's `laranail::<slug>.<command>` shape.
   The hook script `install` writes calls the scoped name. A local copy of `laranail/console`'s

@@ -44,7 +44,7 @@
         "laravel/pint": "^1.30",
         "orchestra/testbench": "^11.1",
         "pestphp/pest": "^5.1",
-        "laranail/package-tools": "^0.1"
+        "laranail/package-tools": "^0.1.10"
     },
     "extra": {
         "laravel": {
